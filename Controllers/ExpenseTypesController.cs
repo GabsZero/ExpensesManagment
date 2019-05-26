@@ -25,6 +25,11 @@ namespace ExpenseManagment.Controllers
             return View(await _context.ExpenseTypes.ToListAsync());
         }
 
+        public async Task<JsonResult> TableData()
+        {
+            return Json(await _context.ExpenseTypes.ToListAsync());
+        }
+
         // GET: ExpenseTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +48,14 @@ namespace ExpenseManagment.Controllers
             return View(expenseType);
         }
 
+        public async Task<JsonResult> ExpenseTypeExist(string name)
+        {
+            if (await _context.ExpenseTypes.AnyAsync(et => et.Name.ToLower() == name.ToLower()))
+                return Json("This expense type already exists");
+
+            return Json(true);
+        }
+
         // GET: ExpenseTypes/Create
         public IActionResult Create()
         {
@@ -58,6 +71,7 @@ namespace ExpenseManagment.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["confirmation"] = expenseType.Name + " was successfully created!";
                 _context.Add(expenseType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +111,7 @@ namespace ExpenseManagment.Controllers
             {
                 try
                 {
+                    TempData["confirmation"] = expenseType.Name + " was successfully updated!";
                     _context.Update(expenseType);
                     await _context.SaveChangesAsync();
                 }
@@ -116,33 +131,15 @@ namespace ExpenseManagment.Controllers
             return View(expenseType);
         }
 
-        // GET: ExpenseTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var expenseType = await _context.ExpenseTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (expenseType == null)
-            {
-                return NotFound();
-            }
-
-            return View(expenseType);
-        }
-
         // POST: ExpenseTypes/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             var expenseType = await _context.ExpenseTypes.FindAsync(id);
+            TempData["confirmation"] = expenseType.Name + " was successfully removed!";
             _context.ExpenseTypes.Remove(expenseType);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(expenseType.Name + " was successfully removed from your data");
         }
 
         private bool ExpenseTypeExists(int id)
