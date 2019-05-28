@@ -15,6 +15,6 @@ namespace ExpenseManagment.Models
         public IncomeType IncomeType { get; set; }
         [Required]
         [Range(0, float.MaxValue)]
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 }

@@ -4,7 +4,6 @@
 // Write your JavaScript code.
 
 function showConfirmationMessage(id, name) {
-    console.log(id, name)
     bootbox.dialog({
         title: 'Removing Expense Type record',
         message: `<p>This action will permanently remove this record (${name}) from your data. Do you want to proceed?.</p>`,

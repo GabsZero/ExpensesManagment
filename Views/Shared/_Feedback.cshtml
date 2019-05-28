@@ -1,0 +1,10 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (TempData["confirmation"] != null)
+{
+    <h6 class="alert alert-success">
+        @TempData["confirmation"]
+    </h6>
+}

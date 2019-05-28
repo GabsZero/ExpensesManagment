@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ExpenseManagment.Models.Income>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<partial name="_Feedback" />
+<br />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table data-toggle="table"
+       data-search="true"
+       data-pagination="true"
+       class="table"
+>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Month)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncomeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Month.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncomeType.Name)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

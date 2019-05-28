@@ -7,10 +7,7 @@
 <h2>Expense Types</h2>
 
 <input type="hidden" id="delete_route" value="@Url.Action("Delete", "ExpenseTypes")" />
-@if(TempData["confirmation"] != null)
-{
-    <h6 class="alert alert-success">@TempData["confirmation"]</h6>
-}
+<partial name="_Feedback" />
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
