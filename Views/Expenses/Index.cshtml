@@ -4,12 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<br />
-<partial name="_Feedback" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@await Component.InvokeAsync("IndexHeader", "Expenses")
+
 <table data-toggle="table"
        data-search="true"
        data-pagination="true"

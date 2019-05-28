@@ -4,13 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<br />
-<partial name="_Feedback" />
+@await Component.InvokeAsync("IndexHeader", "Income Types")
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table data-toggle="table"
+       data-search="true"
+       data-pagination="true"
+       class="table">
     <thead>
         <tr>
             <th>
@@ -20,16 +19,17 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
