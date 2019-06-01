@@ -9,6 +9,10 @@
     {
       "library": "bootstrap-table@1.14.2",
       "destination": "wwwroot/lib/bootstrap-table/"
+    },
+    {
+      "library": "highcharts@7.1.1",
+      "destination": "wwwroot/lib/highcharts/"
     }
   ]
 }
