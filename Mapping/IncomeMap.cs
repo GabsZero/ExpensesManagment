@@ -12,8 +12,8 @@ namespace ExpenseManagment.Mapping
     {
         public void Configure(EntityTypeBuilder<Income> builder)
         {
-            builder.Property("Amount").HasColumnType("decimal");
             builder.HasOne(i => i.Month).WithMany(i => i.Incomes);
+            builder.HasOne(i => i.IncomeType).WithMany(i => i.Incomes);
         }
     }
 }

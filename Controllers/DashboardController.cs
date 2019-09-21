@@ -30,7 +30,7 @@ namespace ExpenseManagment.Controllers
             var incomesDataSet = new
             {
                 type = new List<string>(),
-                amount = new List<decimal>()
+                amount = new List<float>()
             };
             foreach (var income in incomes)
             {

@@ -110,7 +110,7 @@ namespace ExpenseManagment.Controllers
                 {
                     _context.Update(income);
                     await _context.SaveChangesAsync();
-                    TempData["confirmation"] = "Income["+ income.Id + "] with was successfully updated!";
+                    TempData["confirmation"] = "Income["+ income.Id + "] was successfully updated!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {

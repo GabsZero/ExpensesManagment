@@ -22,7 +22,7 @@ namespace ExpenseManagment.Controllers
         // GET: Expenses
         public async Task<IActionResult> Index()
         {
-            var applicationContext = _context.Expenses.Include(e => e.ExpenseType).Include(e => e.Month);
+            var applicationContext = _context.Expenses.Include(e => e.ExpenseType).Include(e => e.Month).OrderBy(e => e.Month.Id);
             return View(await applicationContext.ToListAsync());
         }
 
