@@ -13,7 +13,9 @@
                 <label>
                     Month
                 </label>
-                <select id="month" name="monthId" class ="form-control" asp-items="ViewBag.Months"></select>
+                <div class="form-group">
+                    <select id="month" name="monthId" class ="form-control" asp-items="ViewBag.Months"></select>
+                </div>
                 <input id="filter" type="submit" value="Filter" onclick="filterMonths()" class="btn btn-primary" />
             </div>
         </div>
