@@ -18,4 +18,4 @@ msbuild.wrn
 .vs/
 appsettings.json
 
-wwwroot/
+wwwroot/lib/
